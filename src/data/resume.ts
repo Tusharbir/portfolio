@@ -26,6 +26,9 @@ export const resumeData = {
       bullets: [
         "Monitored IT systems and ERP workflows, helping ensure reliable and continuous business operations.",
         "Coordinated digital assets and staff workflows, troubleshooting system-related issues in a fast-paced environment.",
+        "Created menus, promotional posters, and digital assets for the business brand.",
+        "Designed and developed the business website at simmistiffinservice.com.",
+        "Also designed and built goldengatecatering.com for Golden Gate Catering as a freelance client project.",
       ],
     },
     {
@@ -59,6 +62,12 @@ export const resumeData = {
       type: "engineering",
     },
     {
+      title: "DreamTale — AI-Powered Storytelling App",
+      context:
+        "Built a cross-platform Flutter app with AI-generated narratives using OpenAI and Supabase",
+      type: "engineering",
+    },
+    {
       title: "Full SDLC & Agile Experience",
       context:
         "End-to-end software development from requirements through deployment",
@@ -73,6 +82,19 @@ export const resumeData = {
   ],
   projects: [
     {
+      title: "DreamTale",
+      stack: ["Flutter", "Dart", "Supabase", "OpenAI API", "PostgreSQL"],
+      bullets: [
+        "Built a cross-platform mobile app (Android & iOS) that lets users create imaginary worlds, characters, and AI-driven evolving storylines.",
+        "Integrated OpenAI API for daily AI-generated story events based on world rules, characters, and prior context.",
+        "Implemented Supabase backend with PostgreSQL for auth, real-time data, and user-specific data isolation with RLS.",
+        "Designed a DB-driven plan system (Free/Standard/Premium) with story lifecycle, chapter limits, and subscription management.",
+        "Built a central prompt engine enforcing system rules, plan constraints, world rules, and sanitized user input with multiple generation modes.",
+      ],
+      github: null,
+      featured: true,
+    },
+    {
       title: "PlanWise API",
       stack: ["Java", "Spring Boot", "Selenium", "Algorithms"],
       bullets: [
@@ -80,7 +102,7 @@ export const resumeData = {
         "Implemented Levenshtein-based typo correction to handle user input errors and improve search relevance.",
         "Automated data extraction from provider websites with Selenium to build a reliable data pipeline.",
       ],
-      github: "https://github.com/Tusharbir",
+      github: "https://github.com/Tusharbir/PlanWiseAPI",
     },
     {
       title: "PapDocAuthX",
@@ -90,66 +112,72 @@ export const resumeData = {
         "Designed secure workflows on Azure services to compute and compare signatures, ensuring user privacy and data sovereignty.",
         'Awarded "Best Overall Presentation" at University of Windsor Demo Day 2026.',
       ],
-      github: "https://github.com/Tusharbir",
+      github: "https://github.com/Tusharbir/papauthdocx",
     },
     {
-      title: "Uni Learning Management System",
-      stack: ["Java Swing", "MySQL", "Azure"],
+      title: "Weather Application",
+      stack: ["Android", "Kotlin", "MVVM", "REST API"],
       bullets: [
-        "Developed a desktop LMS using Java Swing and MySQL to manage users, courses, and enrollment with role-based access control.",
+        "Built an Android weather forecasting application using Kotlin with MVVM architecture for clean separation of concerns.",
+        "Integrated weather REST APIs for real-time forecasting data with location-based services.",
+        "Implemented LiveData and ViewModel for reactive UI updates and lifecycle-aware data handling.",
       ],
-      github: "https://github.com/Tusharbir",
+      github: "https://github.com/Tusharbir/WeatherApplication",
+      stars: 3,
     },
     {
       title: "Friends Flame",
       stack: ["Android", "Kotlin", "MVVM", "Firebase"],
       bullets: [
         "Built a social media Android app using MVVM architecture and Kotlin, integrating Firebase for real-time data.",
+        "Leveraged Firebase for real-time social interactions, friend connections, and integrated Google and Facebook sign-ins.",
+        "Designed user profile management, post feeds, and notification features with a clean Material Design UI.",
       ],
-      github: "https://github.com/Tusharbir",
+      github: "https://github.com/Tusharbir/FriendsFlameSocialMedia",
+      stars: 2,
+    },
+    {
+      title: "Uni Learning Management System",
+      stack: ["Java Swing", "MySQL", "Azure"],
+      bullets: [
+        "Developed a desktop LMS using Java Swing and MySQL to manage users, courses, and enrollment with role-based access control.",
+        "Implemented admin, instructor, and student roles with differentiated dashboards and permissions.",
+        "Deployed the MySQL database on Azure for cloud-based data persistence and remote access.",
+      ],
+      github: "https://github.com/Tusharbir/UniLearningManagement",
+    },
+    {
+      title: "Razorpay Clone",
+      stack: ["HTML", "CSS", "JavaScript"],
+      bullets: [
+        "Recreated the Razorpay payment gateway landing page as a front-end project with responsive design and modern UI patterns.",
+        "Implemented pixel-perfect layout with CSS Flexbox and Grid, matching the original site's typography and spacing.",
+        "Added interactive elements including navigation, hero animations, and feature sections with mobile-first responsiveness.",
+      ],
+      github: "https://github.com/Tusharbir/razorpay-clone",
     },
   ],
   skills: [
     {
       category: "Languages",
-      items: [
-        "Java",
-        "Kotlin",
-        "C/C++",
-        "Python",
-        "JavaScript",
-        "SQL",
-        "HTML5/CSS3",
-      ],
+      items: ["Java", "Kotlin", "Dart", "C/C++", "Python", "JavaScript", "SQL", "HTML5/CSS3"],
     },
     {
       category: "Frameworks & Tools",
       items: [
-        "Spring Boot",
-        "Node.js",
-        "React",
-        "JUnit",
-        "Selenium",
-        "Android Studio",
-        "Git",
-        "GitHub",
-        "Jira",
-        "Azure",
+        "Spring Boot", "Flutter", "Node.js", "React", "JUnit", "Selenium",
+        "Android Studio", "Git", "GitHub", "Jira", "Azure",
       ],
     },
     {
       category: "Databases",
-      items: ["MySQL", "Firebase", "MongoDB"],
+      items: ["MySQL", "Firebase", "MongoDB", "Supabase", "PostgreSQL"],
     },
     {
       category: "Core Concepts",
       items: [
-        "Data Structures & Algorithms",
-        "Object-Oriented Design",
-        "Operating Systems",
-        "REST APIs",
-        "SDLC",
-        "Agile/Scrum",
+        "Data Structures & Algorithms", "Object-Oriented Design", "Operating Systems",
+        "REST APIs", "SDLC", "Agile/Scrum",
       ],
     },
   ],

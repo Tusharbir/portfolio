@@ -11,11 +11,32 @@ const categoryIcons: Record<string, typeof Code2> = {
   "Core Concepts": BookOpen,
 };
 
-const categoryColors: Record<string, string> = {
+const categoryGradients: Record<string, string> = {
   Languages: "from-violet-500 to-purple-500",
   "Frameworks & Tools": "from-cyan-500 to-blue-500",
   Databases: "from-emerald-500 to-green-500",
   "Core Concepts": "from-amber-500 to-orange-500",
+};
+
+const cardSlide = (i: number) => ({
+  hidden: { opacity: 0, x: i % 2 === 0 ? -35 : 35, scale: 0.95 },
+  visible: {
+    opacity: 1, x: 0, scale: 1,
+    transition: { duration: 0.6, delay: i * 0.12, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] },
+  },
+});
+
+const pillStagger = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.04, delayChildren: 0.15 } },
+};
+
+const pillPop = {
+  hidden: { opacity: 0, scale: 0.5, y: 8 },
+  visible: {
+    opacity: 1, scale: 1, y: 0,
+    transition: { type: "spring" as const, stiffness: 400, damping: 14 },
+  },
 };
 
 export default function SkillsSection() {
@@ -25,62 +46,78 @@ export default function SkillsSection() {
     <section id="skills" className="relative py-24 px-4">
       <div className="max-w-5xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
+          viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="text-xs tracking-widest uppercase text-violet-400 mb-4 block">
+          <motion.span
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-xs tracking-[0.3em] uppercase text-violet-500 mb-4 block"
+          >
             Tech Stack
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4">
-            Technical Skills
-          </h2>
+          </motion.span>
+          <h2 className="text-3xl sm:text-4xl font-bold t-primary mb-4">Technical Skills</h2>
+          <motion.div
+            initial={{ scaleX: 0 }}
+            whileInView={{ scaleX: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="h-[2px] w-24 bg-gradient-to-r from-violet-500 to-cyan-400 mx-auto rounded-full origin-center"
+          />
         </motion.div>
 
         <div className="grid sm:grid-cols-2 gap-6">
           {skills.map((group, index) => {
             const Icon = categoryIcons[group.category] || Code2;
-            const gradient = categoryColors[group.category] || "from-violet-500 to-purple-500";
+            const gradient = categoryGradients[group.category] || "from-violet-500 to-purple-500";
             return (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="p-6 rounded-2xl bg-white/[0.03] border border-white/5 hover:border-white/10 transition-all"
+                variants={cardSlide(index)}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: "-40px" }}
+                whileTap={{ scale: 0.98 }}
+                className="p-6 rounded-2xl transition-all hover:-translate-y-1 hover:shadow-lg"
+                style={{ background: "var(--card-bg)", border: "1px solid var(--card-border)" }}
               >
                 <div className="flex items-center gap-3 mb-5">
-                  <div
-                    className={`p-2 rounded-xl bg-gradient-to-br ${gradient} bg-opacity-20`}
+                  <motion.div
+                    initial={{ rotate: -30, scale: 0 }}
+                    whileInView={{ rotate: 0, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: 0.1 + index * 0.1, type: "spring", stiffness: 250 }}
+                    className={`p-2 rounded-xl bg-gradient-to-br ${gradient}`}
                   >
                     <Icon size={20} className="text-white" />
-                  </div>
-                  <h3 className="text-base font-semibold text-white">
-                    {group.category}
-                  </h3>
+                  </motion.div>
+                  <h3 className="text-base font-semibold t-primary">{group.category}</h3>
                 </div>
 
-                <div className="flex flex-wrap gap-2">
+                <motion.div
+                  variants={pillStagger}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true }}
+                  className="flex flex-wrap gap-2"
+                >
                   {group.items.map((skill, si) => (
                     <motion.span
                       key={si}
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{
-                        duration: 0.3,
-                        delay: index * 0.1 + si * 0.03,
-                      }}
-                      whileHover={{ scale: 1.05, y: -2 }}
-                      className="px-3 py-1.5 rounded-lg text-sm bg-white/5 text-white/70 border border-white/5 hover:border-white/15 hover:text-white/90 transition-all cursor-default"
+                      variants={pillPop}
+                      whileTap={{ scale: 0.9 }}
+                      className="px-3 py-1.5 rounded-lg text-sm t-secondary cursor-default transition-all hover:-translate-y-0.5 hover:text-violet-500"
+                      style={{ background: "var(--card-bg)", border: "1px solid var(--card-border)" }}
                     >
                       {skill}
                     </motion.span>
                   ))}
-                </div>
+                </motion.div>
               </motion.div>
             );
           })}
