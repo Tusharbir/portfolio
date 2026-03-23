@@ -46,7 +46,7 @@ export const resumeData = {
   achievements: [
     {
       title: 'Awarded "Best Overall Presentation"',
-      context: "University of Windsor Demo Day 2026",
+      context: "University of Windsor CS Demo Day 2025",
       type: "award",
     },
     {
@@ -83,6 +83,8 @@ export const resumeData = {
   projects: [
     {
       title: "DreamTale",
+      description:
+        "Cross-platform storytelling app with AI-generated narratives, subscription plans, and a Supabase-backed data layer with row-level security.",
       stack: ["Flutter", "Dart", "Supabase", "OpenAI API", "PostgreSQL"],
       bullets: [
         "Built a cross-platform mobile app (Android & iOS) that lets users create imaginary worlds, characters, and AI-driven evolving storylines.",
@@ -93,9 +95,40 @@ export const resumeData = {
       ],
       github: null,
       featured: true,
+      liveUrl: null,
+    },
+    {
+      title: "UniTrade",
+      description:
+        "Campus-only marketplace for University of Windsor students to buy and sell—Django, Bootstrap 5, listings with images, search, and in-app messaging.",
+      stack: ["Django", "Python", "Bootstrap 5", "SQLite", "PostgreSQL"],
+      bullets: [
+        "Built UniTrade as a campus-only marketplace where UWindsor students can list, discover, and purchase items from peers.",
+        "Implemented Django authentication with password reset, multi-image listings, and search with filters and pagination.",
+        "Added buyer–seller messaging and a user dashboard that surfaces recently viewed items.",
+        "Shipped with Django templates and Bootstrap 5; SQLite for local development with a PostgreSQL-compatible data model.",
+      ],
+      github: "https://github.com/Tusharbir/internet",
+      liveUrl: null,
+    },
+    {
+      title: "PapDocAuthX",
+      description:
+        "Zero-upload document verification using cryptographic fingerprints on Azure—privacy-preserving auth without storing sensitive files.",
+      stack: ["Cryptography", "System Design", "Azure"],
+      bullets: [
+        "Architected a zero-upload authentication system using document cryptographic fingerprints to verify documents without storing sensitive content.",
+        "Designed secure workflows on Azure services to compute and compare signatures, ensuring user privacy and data sovereignty.",
+        'Awarded "Best Overall Presentation" at University of Windsor CS Demo Day 2025.',
+      ],
+      github: "https://github.com/Tusharbir/papauthdocx",
+      liveUrl: null,
+      trophyAward: "Winner · UWindsor CS Demo Day 2025",
     },
     {
       title: "PlanWise API",
+      description:
+        "REST API for comparing internet plans using AVL trees and tries, with typo-tolerant search and automated provider data extraction.",
       stack: ["Java", "Spring Boot", "Selenium", "Algorithms"],
       bullets: [
         "Engineered a RESTful Java Spring Boot API for internet plan comparison, using AVL-trees for indexing and Tries for prefix-based lookup.",
@@ -103,19 +136,12 @@ export const resumeData = {
         "Automated data extraction from provider websites with Selenium to build a reliable data pipeline.",
       ],
       github: "https://github.com/Tusharbir/PlanWiseAPI",
-    },
-    {
-      title: "PapDocAuthX",
-      stack: ["Cryptography", "System Design", "Azure"],
-      bullets: [
-        "Architected a zero-upload authentication system using document cryptographic fingerprints to verify documents without storing sensitive content.",
-        "Designed secure workflows on Azure services to compute and compare signatures, ensuring user privacy and data sovereignty.",
-        'Awarded "Best Overall Presentation" at University of Windsor Demo Day 2026.',
-      ],
-      github: "https://github.com/Tusharbir/papauthdocx",
+      liveUrl: null,
     },
     {
       title: "Weather Application",
+      description:
+        "Android weather app built with Kotlin and MVVM, integrating REST APIs and lifecycle-aware UI updates.",
       stack: ["Android", "Kotlin", "MVVM", "REST API"],
       bullets: [
         "Built an Android weather forecasting application using Kotlin with MVVM architecture for clean separation of concerns.",
@@ -123,10 +149,13 @@ export const resumeData = {
         "Implemented LiveData and ViewModel for reactive UI updates and lifecycle-aware data handling.",
       ],
       github: "https://github.com/Tusharbir/WeatherApplication",
+      liveUrl: null,
       stars: 3,
     },
     {
       title: "Friends Flame",
+      description:
+        "Social Android app with Firebase real-time data, Google and Facebook sign-in, feeds, and Material Design UI.",
       stack: ["Android", "Kotlin", "MVVM", "Firebase"],
       bullets: [
         "Built a social media Android app using MVVM architecture and Kotlin, integrating Firebase for real-time data.",
@@ -134,10 +163,13 @@ export const resumeData = {
         "Designed user profile management, post feeds, and notification features with a clean Material Design UI.",
       ],
       github: "https://github.com/Tusharbir/FriendsFlameSocialMedia",
+      liveUrl: null,
       stars: 2,
     },
     {
       title: "Uni Learning Management System",
+      description:
+        "Desktop LMS with Java Swing and MySQL: roles for admin, instructor, and student, with Azure-hosted database.",
       stack: ["Java Swing", "MySQL", "Azure"],
       bullets: [
         "Developed a desktop LMS using Java Swing and MySQL to manage users, courses, and enrollment with role-based access control.",
@@ -145,16 +177,7 @@ export const resumeData = {
         "Deployed the MySQL database on Azure for cloud-based data persistence and remote access.",
       ],
       github: "https://github.com/Tusharbir/UniLearningManagement",
-    },
-    {
-      title: "Razorpay Clone",
-      stack: ["HTML", "CSS", "JavaScript"],
-      bullets: [
-        "Recreated the Razorpay payment gateway landing page as a front-end project with responsive design and modern UI patterns.",
-        "Implemented pixel-perfect layout with CSS Flexbox and Grid, matching the original site's typography and spacing.",
-        "Added interactive elements including navigation, hero animations, and feature sections with mobile-first responsiveness.",
-      ],
-      github: "https://github.com/Tusharbir/razorpay-clone",
+      liveUrl: null,
     },
   ],
   skills: [
@@ -220,7 +243,7 @@ export const resumeData = {
   awards: [
     {
       title: "Best Overall Presentation",
-      event: "University of Windsor Demo Day 2026",
+      event: "University of Windsor CS Demo Day 2025",
       project: "PapDocAuthX",
     },
   ],

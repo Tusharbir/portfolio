@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useScrollSpy } from "@/hooks/useScrollSpy";
@@ -17,6 +19,8 @@ const sections = [
 ];
 
 export default function Navbar() {
+  const pathname = usePathname();
+  const isHome = pathname === "/";
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const activeId = useScrollSpy(sections.map((s) => s.id), 80);
@@ -28,7 +32,11 @@ export default function Navbar() {
   }, []);
 
   const scrollTo = (id: string) => {
-    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    if (isHome) {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+    } else {
+      window.location.assign(`/#${id}`);
+    }
     setMobileOpen(false);
   };
 
@@ -48,12 +56,22 @@ export default function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
-            <button
-              onClick={() => scrollTo("hero")}
-              className="text-xl font-bold bg-gradient-to-r from-violet-400 to-cyan-400 bg-clip-text text-transparent"
-            >
-              TSM
-            </button>
+            {isHome ? (
+              <button
+                type="button"
+                onClick={() => scrollTo("hero")}
+                className="text-xl font-bold bg-gradient-to-r from-violet-400 to-cyan-400 bg-clip-text text-transparent"
+              >
+                TSM
+              </button>
+            ) : (
+              <Link
+                href="/"
+                className="text-xl font-bold bg-gradient-to-r from-violet-400 to-cyan-400 bg-clip-text text-transparent"
+              >
+                TSM
+              </Link>
+            )}
 
             <div className="hidden md:flex items-center gap-1">
               {sections.map((s) => (
