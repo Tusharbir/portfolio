@@ -62,16 +62,21 @@ function CardFrontInner({
             {project.title}
           </p>
         </div>
-        {project.featured ? (
-          <span className="absolute left-3 top-3 flex items-center gap-1 rounded-md border border-violet-400/30 bg-violet-950/80 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-violet-200">
-            <Sparkles size={10} className="text-violet-300" />
-            Featured
-          </span>
-        ) : null}
         {project.trophyAward ? (
-          <span className="absolute right-3 top-3 flex max-w-[min(12rem,55%)] items-center gap-1 rounded-md border border-amber-500/35 bg-amber-950/90 px-2 py-0.5 text-[9px] font-semibold uppercase leading-tight tracking-wide text-amber-100 sm:text-[10px]">
+          <span className="absolute left-3 top-3 z-10 flex max-w-[min(12rem,70%)] items-center gap-1 rounded-md border border-amber-500/35 bg-amber-950/90 px-2 py-0.5 text-[9px] font-semibold uppercase leading-tight tracking-wide text-amber-100 sm:text-[10px]">
             <Trophy size={11} className="shrink-0 text-amber-400" aria-hidden />
             <span className="line-clamp-2 text-left">{project.trophyAward}</span>
+          </span>
+        ) : null}
+        {project.featured ? (
+          <span
+            className={cn(
+              "absolute top-3 flex items-center gap-1 rounded-md border border-violet-400/30 bg-violet-950/80 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-violet-200",
+              project.trophyAward ? "left-3 mt-9 sm:mt-10" : "left-3"
+            )}
+          >
+            <Sparkles size={10} className="text-violet-300" />
+            Featured
           </span>
         ) : null}
       </div>

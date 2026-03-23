@@ -36,25 +36,22 @@ export default function ProjectsPage() {
             </Link>
             <h1 className="text-3xl font-bold t-primary sm:text-4xl">All projects</h1>
             <p className="mt-3 max-w-2xl text-sm t-muted sm:text-base">
-              Scroll horizontally. Hover a card to flip for bullet points and links—or tap on touch devices.
+              Hover a card to flip for bullet points and links—or tap on touch devices.
             </p>
           </motion.div>
 
           <div
-            className="w-full overflow-x-auto overflow-y-visible pb-4 [scrollbar-gutter:stable]"
-            style={{ WebkitOverflowScrolling: "touch" }}
-            aria-label="All projects, horizontal scroll"
+            className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3"
+            aria-label="All projects"
           >
-            <div className="flex w-max max-w-none snap-x snap-mandatory gap-6">
-              {projects.map((project, index) => (
-                <ProjectFlipCard
-                  key={project.title}
-                  project={project}
-                  index={index}
-                  className="snap-start"
-                />
-              ))}
-            </div>
+            {projects.map((project, index) => (
+              <ProjectFlipCard
+                key={project.title}
+                project={project}
+                index={index}
+                className="w-full min-w-0"
+              />
+            ))}
           </div>
         </div>
       </main>

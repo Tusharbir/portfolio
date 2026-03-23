@@ -98,20 +98,6 @@ export const resumeData = {
       liveUrl: null,
     },
     {
-      title: "UniTrade",
-      description:
-        "Campus-only marketplace for University of Windsor students to buy and sell—Django, Bootstrap 5, listings with images, search, and in-app messaging.",
-      stack: ["Django", "Python", "Bootstrap 5", "SQLite", "PostgreSQL"],
-      bullets: [
-        "Built UniTrade as a campus-only marketplace where UWindsor students can list, discover, and purchase items from peers.",
-        "Implemented Django authentication with password reset, multi-image listings, and search with filters and pagination.",
-        "Added buyer–seller messaging and a user dashboard that surfaces recently viewed items.",
-        "Shipped with Django templates and Bootstrap 5; SQLite for local development with a PostgreSQL-compatible data model.",
-      ],
-      github: "https://github.com/Tusharbir/internet",
-      liveUrl: null,
-    },
-    {
       title: "PapDocAuthX",
       description:
         "Zero-upload document verification using cryptographic fingerprints on Azure—privacy-preserving auth without storing sensitive files.",
@@ -124,6 +110,20 @@ export const resumeData = {
       github: "https://github.com/Tusharbir/papauthdocx",
       liveUrl: null,
       trophyAward: "Winner · UWindsor CS Demo Day 2025",
+    },
+    {
+      title: "UniTrade",
+      description:
+        "Campus-only marketplace for University of Windsor students to buy and sell—Django, Bootstrap 5, listings with images, search, and in-app messaging.",
+      stack: ["Django", "Python", "Bootstrap 5", "SQLite", "PostgreSQL"],
+      bullets: [
+        "Built UniTrade as a campus-only marketplace where UWindsor students can list, discover, and purchase items from peers.",
+        "Implemented Django authentication with password reset, multi-image listings, and search with filters and pagination.",
+        "Added buyer–seller messaging and a user dashboard that surfaces recently viewed items.",
+        "Shipped with Django templates and Bootstrap 5; SQLite for local development with a PostgreSQL-compatible data model.",
+      ],
+      github: "https://github.com/Tusharbir/internet",
+      liveUrl: null,
     },
     {
       title: "PlanWise API",
