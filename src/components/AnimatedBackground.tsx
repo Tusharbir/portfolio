@@ -15,12 +15,13 @@ export default function AnimatedBackground() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const particlesRef = useRef<Particle[]>([]);
   const animFrameRef = useRef<number>(0);
+  const lastFrameTimeRef = useRef(0);
 
   const getParticleCount = useCallback(() => {
     if (typeof window === "undefined") return 30;
-    if (window.innerWidth < 768) return 15;
-    if (window.innerWidth < 1280) return 25;
-    return 40;
+    if (window.innerWidth < 768) return 8;
+    if (window.innerWidth < 1280) return 12;
+    return 18;
   }, []);
 
   const initParticles = useCallback((w: number, h: number) => {
@@ -63,6 +64,13 @@ export default function AnimatedBackground() {
     }
 
     const animate = () => {
+      const now = performance.now();
+      if (now - lastFrameTimeRef.current < 33) {
+        animFrameRef.current = requestAnimationFrame(animate);
+        return;
+      }
+      lastFrameTimeRef.current = now;
+
       const w = window.innerWidth;
       const h = window.innerHeight;
       const dark = isDark();
@@ -72,7 +80,7 @@ export default function AnimatedBackground() {
       drawGradientMesh(ctx, w, h, dark, t);
 
       const particles = particlesRef.current;
-      const connectionDist = w < 768 ? 85 : 125;
+      const connectionDist = w < 768 ? 58 : 82;
       const particleColor = dark ? "77, 236, 255" : "13, 121, 158";
 
       for (let i = 0; i < particles.length; i++) {
@@ -93,7 +101,7 @@ export default function AnimatedBackground() {
           const dy = p.y - q.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < connectionDist) {
-            const alpha = (1 - dist / connectionDist) * 0.06;
+            const alpha = (1 - dist / connectionDist) * 0.03;
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(q.x, q.y);

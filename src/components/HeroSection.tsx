@@ -1,7 +1,6 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 import { ArrowDown, Download, Github, Linkedin, Mail } from "lucide-react";
 import { resumeData } from "@/data/resume";
 
@@ -30,10 +29,6 @@ const scaleIn = {
 
 export default function HeroSection() {
   const { basics, profile } = resumeData;
-  const ref = useRef(null);
-  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-  const yParallax = useTransform(scrollYProgress, [0, 1], [0, -92]);
-  const opacityFade = useTransform(scrollYProgress, [0, 0.62], [1, 0]);
 
   const nameWords = basics.name.split(" ");
 
@@ -44,7 +39,6 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      ref={ref}
       className="tech-section relative min-h-screen overflow-hidden px-4 pt-16"
     >
       <div className="pointer-events-none absolute inset-0">
@@ -52,7 +46,6 @@ export default function HeroSection() {
           viewBox="0 0 1200 720"
           className="absolute inset-0 h-full w-full opacity-50"
           preserveAspectRatio="xMidYMid slice"
-          style={{ y: yParallax }}
         >
           <path d="M -20 220 C 190 120, 390 280, 620 200 S 1030 120, 1230 230" className="vector-line" />
           <path d="M 100 650 C 280 470, 420 430, 700 480 S 1030 570, 1220 430" className="vector-line" />
@@ -63,7 +56,6 @@ export default function HeroSection() {
       </div>
 
       <motion.div
-        style={{ y: yParallax, opacity: opacityFade }}
         variants={stagger}
         initial="hidden"
         animate="visible"

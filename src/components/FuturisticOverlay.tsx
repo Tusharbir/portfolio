@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useScroll, useSpring, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 const vectorPaths = [
@@ -21,40 +21,23 @@ const vectorNodes = [
 
 export default function FuturisticOverlay({ subtle = false }: { subtle?: boolean }) {
   const reducedMotion = useReducedMotion();
-  const { scrollYProgress } = useScroll();
-
-  const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 120,
-    damping: 24,
-    mass: 0.25,
-  });
-
-  const beamY = useTransform(smoothProgress, [0, 1], subtle ? ["-8%", "106%"] : ["-20%", "115%"]);
-  const gridY = useTransform(smoothProgress, [0, 1], subtle ? ["-3%", "4%"] : ["-5%", "8%"]);
-  const streakY = useTransform(smoothProgress, [0, 1], subtle ? ["-4%", "4%"] : ["-10%", "10%"]);
-  const rightRingRotate = useTransform(smoothProgress, [0, 1], subtle ? [0, 160] : [0, 320]);
-  const leftRingRotate = useTransform(smoothProgress, [0, 1], subtle ? [0, -130] : [0, -280]);
-  const ringScale = useTransform(smoothProgress, [0, 1], subtle ? [0.94, 1.07] : [0.86, 1.2]);
-  const leftOrbY = useTransform(smoothProgress, [0, 1], ["4%", "94%"]);
-  const rightOrbY = useTransform(smoothProgress, [0, 1], ["96%", "8%"]);
 
   return (
     <div className="pointer-events-none fixed inset-0 z-[2] overflow-hidden" aria-hidden="true">
-      <motion.div
-        className="futurism-grid-mask absolute inset-0"
-        style={reducedMotion ? undefined : { y: gridY }}
-      />
+      <div className="futurism-grid-mask absolute inset-0" />
 
       {!subtle && (
         <motion.div
           className="diag-streak absolute inset-[-10%]"
-          style={reducedMotion ? undefined : { y: streakY }}
+          animate={reducedMotion ? undefined : { y: ["-2%", "2%", "-2%"] }}
+          transition={reducedMotion ? undefined : { duration: 13, repeat: Infinity, ease: "linear" }}
         />
       )}
 
       <motion.div
         className="scroll-beam absolute inset-x-[10%] top-[-35vh] h-[35vh] rounded-[999px]"
-        style={reducedMotion ? undefined : { y: beamY }}
+        animate={reducedMotion || subtle ? undefined : { y: ["-6%", "106%"] }}
+        transition={reducedMotion || subtle ? undefined : { duration: 14, repeat: Infinity, ease: "linear" }}
       />
 
       {!subtle && (
@@ -63,7 +46,8 @@ export default function FuturisticOverlay({ subtle = false }: { subtle?: boolean
             <div className="side-rail h-full" />
             <motion.div
               className="rail-orb absolute left-1/2 -translate-x-1/2"
-              style={reducedMotion ? { top: "30%" } : { top: leftOrbY }}
+              animate={reducedMotion ? undefined : { top: ["8%", "92%", "8%"] }}
+              transition={reducedMotion ? undefined : { duration: 12, repeat: Infinity, ease: "easeInOut" }}
             />
           </div>
 
@@ -71,7 +55,8 @@ export default function FuturisticOverlay({ subtle = false }: { subtle?: boolean
             <div className="side-rail h-full" />
             <motion.div
               className="rail-orb absolute left-1/2 -translate-x-1/2"
-              style={reducedMotion ? { top: "70%" } : { top: rightOrbY }}
+              animate={reducedMotion ? undefined : { top: ["92%", "10%", "92%"] }}
+              transition={reducedMotion ? undefined : { duration: 13, repeat: Infinity, ease: "easeInOut" }}
             />
           </div>
         </>
@@ -104,7 +89,8 @@ export default function FuturisticOverlay({ subtle = false }: { subtle?: boolean
 
       <motion.div
         className={subtle ? "hud-ring absolute -right-12 top-[18vh] h-60 w-60 rounded-full opacity-60" : "hud-ring absolute -right-24 top-[15vh] h-80 w-80 rounded-full"}
-        style={reducedMotion ? undefined : { rotate: rightRingRotate, scale: ringScale }}
+        animate={reducedMotion || subtle ? undefined : { rotate: [0, 280] }}
+        transition={reducedMotion || subtle ? undefined : { duration: 20, repeat: Infinity, ease: "linear" }}
       >
         <div className="absolute inset-8 rounded-full border border-cyan-300/20" />
         <div className="absolute inset-[3.75rem] rounded-full border border-emerald-300/25" />
@@ -112,7 +98,8 @@ export default function FuturisticOverlay({ subtle = false }: { subtle?: boolean
 
       <motion.div
         className={subtle ? "hud-ring absolute -left-12 bottom-[8vh] h-44 w-44 rounded-full opacity-45" : "hud-ring absolute -left-20 bottom-[8vh] h-64 w-64 rounded-full opacity-65"}
-        style={reducedMotion ? undefined : { rotate: leftRingRotate }}
+        animate={reducedMotion || subtle ? undefined : { rotate: [0, -240] }}
+        transition={reducedMotion || subtle ? undefined : { duration: 18, repeat: Infinity, ease: "linear" }}
       >
         <div className="absolute inset-7 rounded-full border border-cyan-200/20" />
       </motion.div>

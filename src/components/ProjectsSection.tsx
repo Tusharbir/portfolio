@@ -11,7 +11,7 @@ export default function ProjectsSection() {
 
   return (
     <section id="projects" className="tech-section relative overflow-visible py-24">
-      <div className="mx-auto max-w-7xl px-4">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -40,17 +40,13 @@ export default function ProjectsSection() {
             Scroll sideways. Each card shows a short summary and stack on the front; hover (or tap on touch) to flip for full bullet points and GitHub.
           </p>
         </motion.div>
-      </div>
 
-      <div
-        className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
-      >
         <div
-          className="max-w-full overflow-x-auto overflow-y-visible pb-4 [scrollbar-gutter:stable]"
+          className="md:hidden max-w-full overflow-x-auto overflow-y-visible pb-4 [scrollbar-gutter:stable]"
           style={{ WebkitOverflowScrolling: "touch" }}
           aria-label="Project cards, horizontal scroll"
         >
-          <div className="flex w-max min-w-full snap-x snap-mandatory gap-6 pr-2 sm:pr-3">
+          <div className="flex w-max min-w-full snap-x snap-mandatory gap-5 pr-3">
             {projects.map((project, index) => (
               <ProjectFlipCard
                 key={project.title}
@@ -61,15 +57,26 @@ export default function ProjectsSection() {
             ))}
           </div>
         </div>
+
+        <div className="hidden md:grid md:grid-cols-2 md:gap-6 xl:grid-cols-3 xl:gap-7" aria-label="Project cards, grid">
+          {projects.map((project, index) => (
+            <ProjectFlipCard
+              key={project.title}
+              project={project}
+              index={index}
+              className="w-full sm:w-full"
+            />
+          ))}
+        </div>
       </div>
 
-      <div className="mx-auto max-w-7xl px-4">
+      <div className="mx-auto mt-10 max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.45, delay: 0.15 }}
-          className="mt-10 flex justify-center"
+          className="flex justify-center"
         >
           <Link
             href="/projects"

@@ -14,7 +14,6 @@ import ProjectsSection from "@/components/ProjectsSection";
 import SkillsSection from "@/components/SkillsSection";
 import EducationSection from "@/components/EducationSection";
 import ContactSection from "@/components/ContactSection";
-import ScrollWarpSection from "@/components/ScrollWarpSection";
 import { ThemeProvider } from "@/components/ThemeProvider";
 
 function SectionDivider() {
@@ -67,7 +66,7 @@ export default function Home() {
       {!splashDone && <SplashScreen onComplete={handleSplashComplete} />}
 
       <AnimatedBackground />
-      <FuturisticOverlay />
+      <FuturisticOverlay subtle />
 
       {splashDone && (
         <motion.div
@@ -79,31 +78,19 @@ export default function Home() {
           <Navbar />
 
           <main className="relative z-10">
-            <ScrollWarpSection>
-              <HeroSection />
-            </ScrollWarpSection>
+            <HeroSection />
             <SectionDivider />
-            <ScrollWarpSection>
-              <ExperienceSection />
-            </ScrollWarpSection>
+            <ExperienceSection />
             <SectionDivider />
-            <ScrollWarpSection>
-              <AchievementsSection />
-            </ScrollWarpSection>
+            <AchievementsSection />
             <SectionDivider />
             <ProjectsSection />
             <SectionDivider />
-            <ScrollWarpSection>
-              <SkillsSection />
-            </ScrollWarpSection>
+            <SkillsSection />
             <SectionDivider />
-            <ScrollWarpSection>
-              <EducationSection />
-            </ScrollWarpSection>
+            <EducationSection />
             <SectionDivider />
-            <ScrollWarpSection>
-              <ContactSection />
-            </ScrollWarpSection>
+            <ContactSection />
           </main>
         </motion.div>
       )}
