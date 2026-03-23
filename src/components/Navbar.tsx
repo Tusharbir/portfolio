@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useScrollSpy } from "@/hooks/useScrollSpy";
@@ -20,6 +20,7 @@ const sections = [
 
 export default function Navbar() {
   const pathname = usePathname();
+  const router = useRouter();
   const isHome = pathname === "/";
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -35,7 +36,7 @@ export default function Navbar() {
     if (isHome) {
       document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
     } else {
-      window.location.assign(`/#${id}`);
+      router.push(`/#${id}`);
     }
     setMobileOpen(false);
   };
@@ -46,28 +47,28 @@ export default function Navbar() {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6 }}
-        className={cn(
-          "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-          scrolled
-            ? "backdrop-blur-xl border-b"
-            : "bg-transparent"
-        )}
-        style={scrolled ? { background: "var(--nav-bg)", borderColor: "var(--nav-border)" } : undefined}
+        className="fixed left-0 right-0 top-3 z-50 px-3 sm:px-4 transition-all duration-300"
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between h-16">
+        <div className="mx-auto max-w-7xl">
+          <div
+            className={cn(
+              "flex h-16 items-center justify-between rounded-2xl border px-4 sm:px-6 lg:px-8 transition-all duration-300",
+              scrolled ? "backdrop-blur-xl shadow-lg shadow-cyan-500/8" : "backdrop-blur-md"
+            )}
+            style={{ background: "var(--nav-bg)", borderColor: "var(--nav-border)" }}
+          >
             {isHome ? (
               <button
                 type="button"
                 onClick={() => scrollTo("hero")}
-                className="text-xl font-bold bg-gradient-to-r from-violet-400 to-cyan-400 bg-clip-text text-transparent"
+                className="brand-gradient text-xl font-bold bg-clip-text text-transparent tracking-wide"
               >
                 TSM
               </button>
             ) : (
               <Link
                 href="/"
-                className="text-xl font-bold bg-gradient-to-r from-violet-400 to-cyan-400 bg-clip-text text-transparent"
+                className="brand-gradient text-xl font-bold bg-clip-text text-transparent tracking-wide"
               >
                 TSM
               </Link>
@@ -81,8 +82,8 @@ export default function Navbar() {
                   className={cn(
                     "px-3 py-1.5 rounded-lg text-sm transition-all duration-200",
                     activeId === s.id
-                      ? "text-violet-500 bg-violet-500/10"
-                      : "t-secondary hover:t-primary hover:bg-violet-500/5"
+                      ? "text-cyan-300 bg-cyan-400/10"
+                      : "t-secondary hover:t-primary hover:bg-cyan-400/10"
                   )}
                 >
                   {s.label}
@@ -112,8 +113,8 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-x-0 top-16 z-40 backdrop-blur-xl md:hidden"
-            style={{ background: "var(--mobile-menu-bg)", borderBottom: "1px solid var(--card-border)" }}
+            className="fixed inset-x-3 top-[4.75rem] z-40 rounded-2xl border backdrop-blur-xl md:hidden sm:inset-x-4"
+            style={{ background: "var(--mobile-menu-bg)", borderColor: "var(--card-border)" }}
           >
             <div className="px-4 py-4 flex flex-col gap-1">
               {sections.map((s) => (
@@ -123,8 +124,8 @@ export default function Navbar() {
                   className={cn(
                     "px-4 py-3 rounded-lg text-left text-sm transition-all",
                     activeId === s.id
-                      ? "text-violet-500 bg-violet-500/10"
-                      : "t-secondary hover:t-primary hover:bg-violet-500/5"
+                      ? "text-cyan-300 bg-cyan-400/10"
+                      : "t-secondary hover:t-primary hover:bg-cyan-400/10"
                   )}
                 >
                   {s.label}

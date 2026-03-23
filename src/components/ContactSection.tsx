@@ -24,7 +24,7 @@ export default function ContactSection() {
   ];
 
   return (
-    <section id="contact" className="relative py-24 px-4">
+    <section id="contact" className="tech-section relative py-24 px-4">
       <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -38,7 +38,7 @@ export default function ContactSection() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-xs tracking-[0.3em] uppercase text-violet-500 mb-4 block"
+            className="text-xs tracking-[0.3em] uppercase text-cyan-500 mb-4 block"
           >
             Get In Touch
           </motion.span>
@@ -48,7 +48,7 @@ export default function ContactSection() {
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="h-[2px] w-24 bg-gradient-to-r from-violet-500 to-cyan-400 mx-auto mb-6 rounded-full origin-center"
+            className="h-[2px] w-24 bg-gradient-to-r from-cyan-500 to-cyan-400 mx-auto mb-6 rounded-full origin-center"
           />
           <p className="t-muted max-w-2xl mx-auto">{profile[2]}</p>
           <p className="t-faint max-w-2xl mx-auto mt-2 text-sm">{profile[3]}</p>
@@ -83,9 +83,9 @@ export default function ContactSection() {
                       whileInView={{ rotate: 0, scale: 1 }}
                       viewport={{ once: true }}
                       transition={{ delay: 0.2 + index * 0.08, type: "spring", stiffness: 300 }}
-                      className="p-2 rounded-xl bg-violet-500/10"
+                      className="p-2 rounded-xl bg-cyan-500/10"
                     >
-                      <Icon size={18} className="text-violet-500" />
+                      <Icon size={18} className="text-cyan-500" />
                     </motion.div>
                     {link.href && (
                       <motion.div
@@ -94,7 +94,7 @@ export default function ContactSection() {
                         viewport={{ once: true }}
                         transition={{ delay: 0.3 + index * 0.08 }}
                       >
-                        <ArrowUpRight size={16} className="t-faint group-hover:text-violet-500 transition-all" />
+                        <ArrowUpRight size={16} className="t-faint group-hover:text-cyan-500 transition-all" />
                       </motion.div>
                     )}
                   </div>

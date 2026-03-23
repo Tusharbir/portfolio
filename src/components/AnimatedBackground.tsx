@@ -66,13 +66,14 @@ export default function AnimatedBackground() {
       const w = window.innerWidth;
       const h = window.innerHeight;
       const dark = isDark();
+      const t = performance.now() * 0.00008;
       ctx.clearRect(0, 0, w, h);
 
-      drawGradientMesh(ctx, w, h, dark);
+      drawGradientMesh(ctx, w, h, dark, t);
 
       const particles = particlesRef.current;
-      const connectionDist = w < 768 ? 80 : 120;
-      const particleColor = dark ? "139, 92, 246" : "109, 40, 217";
+      const connectionDist = w < 768 ? 85 : 125;
+      const particleColor = dark ? "77, 236, 255" : "13, 121, 158";
 
       for (let i = 0; i < particles.length; i++) {
         const p = particles[i];
@@ -118,26 +119,31 @@ export default function AnimatedBackground() {
   );
 }
 
-function drawGradientMesh(ctx: CanvasRenderingContext2D, w: number, h: number, dark: boolean) {
-  const o = dark ? 0.06 : 0.04;
-  const g1 = ctx.createRadialGradient(w * 0.2, h * 0.3, 0, w * 0.2, h * 0.3, w * 0.5);
-  g1.addColorStop(0, `rgba(99, 39, 120, ${o})`);
+function drawGradientMesh(ctx: CanvasRenderingContext2D, w: number, h: number, dark: boolean, t: number) {
+  const o = dark ? 0.055 : 0.04;
+  const leftX = w * (0.22 + Math.sin(t * 1.2) * 0.06);
+  const leftY = h * (0.32 + Math.cos(t * 0.9) * 0.05);
+  const rightX = w * (0.78 + Math.cos(t) * 0.06);
+  const rightY = h * (0.68 + Math.sin(t * 1.1) * 0.05);
+
+  const g1 = ctx.createRadialGradient(leftX, leftY, 0, leftX, leftY, w * 0.52);
+  g1.addColorStop(0, `rgba(22, 166, 235, ${o})`);
   g1.addColorStop(1, "rgba(0, 0, 0, 0)");
   ctx.fillStyle = g1;
   ctx.fillRect(0, 0, w, h);
 
-  const g2 = ctx.createRadialGradient(w * 0.8, h * 0.7, 0, w * 0.8, h * 0.7, w * 0.5);
-  g2.addColorStop(0, `rgba(30, 58, 138, ${o * 0.8})`);
+  const g2 = ctx.createRadialGradient(rightX, rightY, 0, rightX, rightY, w * 0.55);
+  g2.addColorStop(0, `rgba(72, 214, 170, ${o * 0.78})`);
   g2.addColorStop(1, "rgba(0, 0, 0, 0)");
   ctx.fillStyle = g2;
   ctx.fillRect(0, 0, w, h);
 }
 
 function drawStaticGradient(ctx: CanvasRenderingContext2D, w: number, h: number, dark: boolean) {
-  const o = dark ? 0.05 : 0.03;
+  const o = dark ? 0.05 : 0.035;
   const gradient = ctx.createLinearGradient(0, 0, w, h);
-  gradient.addColorStop(0, `rgba(99, 39, 120, ${o})`);
-  gradient.addColorStop(1, `rgba(30, 58, 138, ${o * 0.6})`);
+  gradient.addColorStop(0, `rgba(22, 166, 235, ${o})`);
+  gradient.addColorStop(1, `rgba(72, 214, 170, ${o * 0.6})`);
   ctx.fillStyle = gradient;
   ctx.fillRect(0, 0, w, h);
 }

@@ -43,8 +43,13 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
           initial={{ opacity: 1 }}
           exit={{ opacity: 0, scale: 1.05 }}
           transition={{ duration: 0.6, ease: "easeInOut" }}
-          className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#050510]"
+          className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#020b13]"
         >
+          <div className="pointer-events-none absolute inset-0 opacity-55">
+            <div className="absolute inset-x-[8%] top-[28%] h-px bg-gradient-to-r from-transparent via-cyan-300/40 to-transparent" />
+            <div className="absolute inset-x-[15%] top-[66%] h-px bg-gradient-to-r from-transparent via-emerald-300/30 to-transparent" />
+          </div>
+
           <motion.div
             initial={{ scale: 0, rotate: -180 }}
             animate={{ scale: 1, rotate: 0 }}
@@ -53,7 +58,7 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
           >
             <div className="relative w-24 h-24 flex items-center justify-center">
               <motion.div
-                className="absolute inset-0 rounded-2xl bg-gradient-to-br from-violet-600 via-purple-500 to-cyan-400"
+                className="absolute inset-0 rounded-2xl bg-gradient-to-br from-cyan-500 via-sky-500 to-emerald-400"
                 animate={{ rotate: 360 }}
                 transition={{
                   duration: 3,
@@ -62,9 +67,9 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
                 }}
                 style={{ padding: 2 }}
               >
-                <div className="w-full h-full rounded-2xl bg-[#050510]" />
+                <div className="w-full h-full rounded-2xl bg-[#020b13]" />
               </motion.div>
-              <span className="relative z-10 text-3xl font-bold bg-gradient-to-r from-violet-400 to-cyan-400 bg-clip-text text-transparent tracking-wider">
+              <span className="relative z-10 text-3xl font-bold bg-gradient-to-r from-cyan-300 via-sky-200 to-emerald-300 bg-clip-text text-transparent tracking-wider">
                 TSM
               </span>
             </div>
@@ -74,14 +79,14 @@ export default function SplashScreen({ onComplete }: SplashScreenProps) {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.5 }}
-            className="text-sm text-white/40 tracking-[0.3em] uppercase mb-6"
+            className="text-sm text-cyan-100/45 tracking-[0.3em] uppercase mb-6"
           >
             Loading Portfolio
           </motion.p>
 
           <div className="w-48 h-[2px] bg-white/10 rounded-full overflow-hidden">
             <motion.div
-              className="h-full bg-gradient-to-r from-violet-500 to-cyan-400 rounded-full"
+              className="h-full bg-gradient-to-r from-cyan-400 via-sky-300 to-emerald-300 rounded-full"
               style={{ width: `${progress}%` }}
             />
           </div>

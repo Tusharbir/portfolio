@@ -10,7 +10,7 @@ export default function ProjectsSection() {
   const { projects } = resumeData;
 
   return (
-    <section id="projects" className="relative py-24">
+    <section id="projects" className="tech-section relative overflow-visible py-24">
       <div className="mx-auto max-w-7xl px-4">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -24,7 +24,7 @@ export default function ProjectsSection() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="mb-4 block text-xs tracking-[0.3em] text-violet-500 uppercase"
+            className="mb-4 block text-xs tracking-[0.3em] text-cyan-500 uppercase"
           >
             What I&apos;ve Built
           </motion.span>
@@ -34,7 +34,7 @@ export default function ProjectsSection() {
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="mx-auto mb-4 h-[2px] w-24 origin-center rounded-full bg-gradient-to-r from-violet-500 to-cyan-400"
+            className="mx-auto mb-4 h-[2px] w-24 origin-center rounded-full bg-gradient-to-r from-cyan-500 to-cyan-400"
           />
           <p className="mx-auto max-w-2xl text-sm t-muted sm:text-base">
             Scroll sideways. Each card shows a short summary and stack on the front; hover (or tap on touch) to flip for full bullet points and GitHub.
@@ -43,19 +43,23 @@ export default function ProjectsSection() {
       </div>
 
       <div
-        className="w-full overflow-x-auto overflow-y-visible pb-4 [scrollbar-gutter:stable]"
-        style={{ WebkitOverflowScrolling: "touch" }}
-        aria-label="Project cards, horizontal scroll"
+        className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8"
       >
-        <div className="mx-auto flex w-max max-w-none snap-x snap-mandatory gap-6 px-4 sm:px-6 lg:px-8">
-          {projects.map((project, index) => (
-            <ProjectFlipCard
-              key={project.title}
-              project={project}
-              index={index}
-              className="snap-start"
-            />
-          ))}
+        <div
+          className="max-w-full overflow-x-auto overflow-y-visible pb-4 [scrollbar-gutter:stable]"
+          style={{ WebkitOverflowScrolling: "touch" }}
+          aria-label="Project cards, horizontal scroll"
+        >
+          <div className="flex w-max min-w-full snap-x snap-mandatory gap-6 pr-2 sm:pr-3">
+            {projects.map((project, index) => (
+              <ProjectFlipCard
+                key={project.title}
+                project={project}
+                index={index}
+                className="snap-start"
+              />
+            ))}
+          </div>
         </div>
       </div>
 
@@ -69,7 +73,7 @@ export default function ProjectsSection() {
         >
           <Link
             href="/projects"
-            className="group inline-flex items-center gap-2 rounded-xl border border-violet-500/40 bg-violet-500/10 px-6 py-3 text-sm font-semibold text-violet-200 transition hover:border-violet-400/50 hover:bg-violet-500/20"
+            className="group inline-flex items-center gap-2 rounded-xl border border-cyan-500/40 bg-cyan-500/10 px-6 py-3 text-sm font-semibold text-cyan-200 transition hover:border-cyan-400/50 hover:bg-cyan-500/20"
           >
             View all projects
             <ArrowRight

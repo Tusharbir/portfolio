@@ -28,7 +28,7 @@ function gradientForTitle(title: string): string {
 
 /** 3D face: transform + backface on one layer; avoid overflow on this node (breaks backface culling). */
 const faceShell =
-  "absolute inset-0 flex min-h-[400px] w-full flex-col rounded-2xl border border-white/[0.08] bg-[#1e293b] shadow-lg";
+  "absolute inset-0 flex min-h-[400px] w-full flex-col rounded-2xl border border-card bg-card shadow-lg backdrop-blur-xl";
 
 const faceTransform = (rotateY: 0 | 180): React.CSSProperties => ({
   backfaceVisibility: "hidden",
@@ -58,7 +58,7 @@ function CardFrontInner({
       >
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_20%,rgba(255,255,255,0.12),transparent_50%)]" />
         <div className="absolute inset-0 flex items-center justify-center px-4">
-          <p className="text-center text-[11px] font-bold uppercase leading-tight tracking-[0.2em] text-white/90 sm:text-xs">
+          <p className="max-w-[92%] break-words text-center text-[10px] font-bold uppercase leading-tight tracking-[0.2em] text-white/90 sm:text-xs">
             {project.title}
           </p>
         </div>
@@ -71,20 +71,20 @@ function CardFrontInner({
         {project.featured ? (
           <span
             className={cn(
-              "absolute top-3 flex items-center gap-1 rounded-md border border-violet-400/30 bg-violet-950/80 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-violet-200",
+              "absolute top-3 flex items-center gap-1 rounded-md border border-cyan-400/30 bg-cyan-950/80 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-cyan-200",
               project.trophyAward ? "left-3 mt-9 sm:mt-10" : "left-3"
             )}
           >
-            <Sparkles size={10} className="text-violet-300" />
+            <Sparkles size={10} className="text-cyan-300" />
             Featured
           </span>
         ) : null}
       </div>
 
       <div className="flex min-h-0 flex-1 flex-col rounded-b-2xl p-5">
-        <h3 className="mb-3 text-lg font-bold leading-snug text-white">{project.title}</h3>
+        <h3 className="mb-3 text-lg font-bold leading-snug t-primary">{project.title}</h3>
 
-        <p className="mb-4 line-clamp-4 text-sm leading-relaxed text-slate-300/90">
+        <p className="mb-4 line-clamp-4 text-sm leading-relaxed t-secondary">
           {project.description}
         </p>
 
@@ -92,14 +92,14 @@ function CardFrontInner({
           {project.stack.map((tech) => (
             <span
               key={tech}
-              className="rounded-md border border-white/10 bg-white/5 px-2 py-1 text-[11px] text-slate-100"
+              className="rounded-md border border-card bg-cyan-500/10 px-2 py-1 text-[11px] t-secondary"
             >
               {tech}
             </span>
           ))}
         </div>
 
-        <p className="mt-4 text-center text-[11px] font-medium text-slate-500 sm:text-xs">
+        <p className="mt-4 text-center text-[11px] font-medium t-faint sm:text-xs">
           {useTouchFlip ? "Tap for details" : "Hover for details"}
         </p>
       </div>
@@ -111,7 +111,7 @@ function CardBackInner({ project, backId }: { project: PortfolioProjectCard; bac
   return (
     <div id={backId} className="flex min-h-0 flex-1 flex-col rounded-2xl">
       <div className="min-h-0 flex-1 overflow-y-auto overscroll-contain p-5 pt-5">
-        <h3 className="mb-3 text-base font-bold text-white">{project.title}</h3>
+        <h3 className="mb-3 text-base font-bold t-primary">{project.title}</h3>
         {project.trophyAward ? (
           <p className="mb-4 flex items-center gap-1.5 text-xs font-medium text-amber-200/95">
             <Trophy size={14} className="shrink-0 text-amber-400" aria-hidden />
@@ -120,13 +120,13 @@ function CardBackInner({ project, backId }: { project: PortfolioProjectCard; bac
         ) : null}
         <ul className="mb-6 space-y-2.5">
           {project.bullets.map((bullet, i) => (
-            <li key={i} className="flex gap-2 text-sm text-slate-300/95">
-              <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-violet-400/80" />
+            <li key={i} className="flex gap-2 text-sm t-secondary">
+              <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-cyan-400/80" />
               <span>{bullet}</span>
             </li>
           ))}
         </ul>
-        <div className="flex flex-col gap-2 border-t border-white/10 pt-4">
+        <div className="flex flex-col gap-2 border-t border-card pt-4">
           {project.github ? (
             <a
               href={project.github}
@@ -139,14 +139,14 @@ function CardBackInner({ project, backId }: { project: PortfolioProjectCard; bac
               View on GitHub
             </a>
           ) : (
-            <p className="text-center text-sm text-slate-500">Repository is private.</p>
+            <p className="text-center text-sm t-faint">Repository is private.</p>
           )}
           {project.liveUrl ? (
             <a
               href={project.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 rounded-xl bg-purple-500 py-3 text-sm font-semibold text-white transition hover:bg-purple-400"
+              className="flex items-center justify-center gap-2 rounded-xl bg-sky-500 py-3 text-sm font-semibold text-white transition hover:bg-sky-400"
               onClick={(e) => e.stopPropagation()}
             >
               <Eye size={18} />
@@ -169,7 +169,7 @@ function CardFrontStandalone({
   return (
     <div
       className={cn(
-        "flex min-h-[400px] w-full flex-col overflow-hidden rounded-2xl border border-white/[0.08] bg-[#1e293b] shadow-lg"
+        "flex min-h-[400px] w-full flex-col overflow-hidden rounded-2xl border border-card bg-card shadow-lg backdrop-blur-xl"
       )}
     >
       <CardFrontInner project={project} useTouchFlip={useTouchFlip} />
@@ -182,7 +182,7 @@ function CardBackStandalone({ project, backId }: { project: PortfolioProjectCard
     <div
       id={backId}
       className={cn(
-        "flex min-h-[400px] w-full flex-col overflow-hidden rounded-2xl border border-white/[0.08] bg-[#1e293b] shadow-lg"
+        "flex min-h-[400px] w-full flex-col overflow-hidden rounded-2xl border border-card bg-card shadow-lg backdrop-blur-xl"
       )}
     >
       <CardBackInner project={project} backId={backId} />
@@ -256,7 +256,7 @@ export default function ProjectFlipCard({
             <button
               type="button"
               onClick={() => setReducedExpanded(true)}
-              className="mt-2 w-full rounded-lg border border-violet-500/30 py-2 text-sm text-violet-300"
+              className="mt-2 w-full rounded-lg border border-cyan-500/30 py-2 text-sm text-cyan-300"
             >
               Show full details
             </button>
@@ -267,7 +267,7 @@ export default function ProjectFlipCard({
             <button
               type="button"
               onClick={() => setReducedExpanded(false)}
-              className="mt-2 w-full rounded-lg border border-white/10 py-2 text-sm text-slate-300"
+              className="mt-2 w-full rounded-lg border border-card py-2 text-sm t-secondary"
             >
               Show summary
             </button>
@@ -284,7 +284,7 @@ export default function ProjectFlipCard({
       viewport={{ once: true, margin: "-40px" }}
       transition={{ duration: 0.45, delay: index * 0.06 }}
       className={cn(
-        "w-[min(85vw,320px)] shrink-0 sm:w-[340px]",
+        "w-[min(82vw,320px)] shrink-0 overflow-hidden sm:w-[340px]",
         useTouchFlip && "cursor-pointer",
         className
       )}

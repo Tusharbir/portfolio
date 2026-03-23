@@ -6,7 +6,7 @@ import { resumeData } from "@/data/resume";
 
 const typeConfig: Record<string, { icon: typeof Trophy; accent: string; glow: string }> = {
   award: { icon: Trophy, accent: "text-yellow-500", glow: "shadow-yellow-500/20" },
-  engineering: { icon: Code, accent: "text-violet-500", glow: "shadow-violet-500/20" },
+  engineering: { icon: Code, accent: "text-cyan-500", glow: "shadow-cyan-500/20" },
   leadership: { icon: Star, accent: "text-cyan-500", glow: "shadow-cyan-500/20" },
   certification: { icon: ShieldCheck, accent: "text-emerald-500", glow: "shadow-emerald-500/20" },
 };
@@ -24,7 +24,7 @@ export default function AchievementsSection() {
   const topImpact = achievements.slice(0, 3);
 
   return (
-    <section id="achievements" className="relative py-24 px-4">
+    <section id="achievements" className="tech-section relative py-24 px-4">
       <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -38,7 +38,7 @@ export default function AchievementsSection() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-xs tracking-[0.3em] uppercase text-violet-500 mb-4 block"
+            className="text-xs tracking-[0.3em] uppercase text-cyan-500 mb-4 block"
           >
             Highlights
           </motion.span>
@@ -108,7 +108,7 @@ export default function AchievementsSection() {
                     whileInView={{ rotate: 0, scale: 1 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: 0.1 + index * 0.08, type: "spring", stiffness: 300 }}
-                    className="p-2 rounded-xl bg-violet-500/10 shrink-0"
+                    className="p-2 rounded-xl bg-cyan-500/10 shrink-0"
                   >
                     <Icon size={20} className={config.accent} />
                   </motion.div>

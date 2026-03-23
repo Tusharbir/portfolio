@@ -12,7 +12,7 @@ const categoryIcons: Record<string, typeof Code2> = {
 };
 
 const categoryGradients: Record<string, string> = {
-  Languages: "from-violet-500 to-purple-500",
+  Languages: "from-cyan-500 to-sky-500",
   "Frameworks & Tools": "from-cyan-500 to-blue-500",
   Databases: "from-emerald-500 to-green-500",
   "Core Concepts": "from-amber-500 to-orange-500",
@@ -43,7 +43,7 @@ export default function SkillsSection() {
   const { skills } = resumeData;
 
   return (
-    <section id="skills" className="relative py-24 px-4">
+    <section id="skills" className="tech-section relative py-24 px-4">
       <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -57,7 +57,7 @@ export default function SkillsSection() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-xs tracking-[0.3em] uppercase text-violet-500 mb-4 block"
+            className="text-xs tracking-[0.3em] uppercase text-cyan-500 mb-4 block"
           >
             Tech Stack
           </motion.span>
@@ -67,14 +67,14 @@ export default function SkillsSection() {
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="h-[2px] w-24 bg-gradient-to-r from-violet-500 to-cyan-400 mx-auto rounded-full origin-center"
+            className="h-[2px] w-24 bg-gradient-to-r from-cyan-500 to-cyan-400 mx-auto rounded-full origin-center"
           />
         </motion.div>
 
         <div className="grid sm:grid-cols-2 gap-6">
           {skills.map((group, index) => {
             const Icon = categoryIcons[group.category] || Code2;
-            const gradient = categoryGradients[group.category] || "from-violet-500 to-purple-500";
+            const gradient = categoryGradients[group.category] || "from-cyan-500 to-sky-500";
             return (
               <motion.div
                 key={index}
@@ -111,7 +111,7 @@ export default function SkillsSection() {
                       key={si}
                       variants={pillPop}
                       whileTap={{ scale: 0.9 }}
-                      className="px-3 py-1.5 rounded-lg text-sm t-secondary cursor-default transition-all hover:-translate-y-0.5 hover:text-violet-500"
+                      className="px-3 py-1.5 rounded-lg text-sm t-secondary cursor-default transition-all hover:-translate-y-0.5 hover:text-cyan-500"
                       style={{ background: "var(--card-bg)", border: "1px solid var(--card-border)" }}
                     >
                       {skill}

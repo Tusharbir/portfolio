@@ -25,7 +25,7 @@ export default function ExperienceSection() {
   ];
 
   return (
-    <section id="experience" className="relative py-24 px-4">
+    <section id="experience" className="tech-section relative py-24 px-4">
       <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -39,7 +39,7 @@ export default function ExperienceSection() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-xs tracking-[0.3em] uppercase text-violet-500 mb-4 block"
+            className="text-xs tracking-[0.3em] uppercase text-cyan-500 mb-4 block"
           >
             Career Journey
           </motion.span>
@@ -49,7 +49,7 @@ export default function ExperienceSection() {
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="h-[2px] w-24 bg-gradient-to-r from-violet-500 to-cyan-400 mx-auto mb-4 rounded-full origin-center"
+            className="h-[2px] w-24 bg-gradient-to-r from-cyan-500 to-cyan-400 mx-auto mb-4 rounded-full origin-center"
           />
           <p className="t-muted max-w-2xl mx-auto">{profile[1]}</p>
         </motion.div>
@@ -59,16 +59,16 @@ export default function ExperienceSection() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mb-12 p-6 rounded-2xl bg-violet-500/5 border border-violet-500/20"
+          className="mb-12 p-6 rounded-2xl bg-cyan-500/5 border border-cyan-500/20"
         >
           <div className="flex items-center gap-2 mb-4">
             <motion.div
               animate={{ rotate: [0, 15, -15, 0] }}
               transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
             >
-              <Sparkles size={18} className="text-violet-500" />
+              <Sparkles size={18} className="text-cyan-500" />
             </motion.div>
-            <h3 className="text-sm font-semibold text-violet-500 tracking-wider uppercase">Impact Highlights</h3>
+            <h3 className="text-sm font-semibold text-cyan-500 tracking-wider uppercase">Impact Highlights</h3>
           </div>
           <div className="grid sm:grid-cols-3 gap-3">
             {impactHighlights.map((h, i) => (
@@ -93,7 +93,7 @@ export default function ExperienceSection() {
             whileInView={{ scaleY: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 1.2, ease: "easeOut" }}
-            className="absolute left-[23px] top-0 bottom-0 w-px bg-gradient-to-b from-violet-500/50 via-purple-500/30 to-transparent hidden sm:block origin-top"
+            className="absolute left-[23px] top-0 bottom-0 w-px bg-gradient-to-b from-cyan-500/50 via-sky-500/30 to-transparent hidden sm:block origin-top"
           />
 
           <div className="space-y-6">
@@ -111,7 +111,7 @@ export default function ExperienceSection() {
                   whileInView={{ scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: 0.2 + index * 0.15, type: "spring", stiffness: 300 }}
-                  className="hidden sm:block absolute left-[18px] top-8 w-3 h-3 rounded-full bg-violet-500 border-4 z-10"
+                  className="hidden sm:block absolute left-[18px] top-8 w-3 h-3 rounded-full bg-cyan-500 border-4 z-10"
                   style={{ borderColor: "var(--background)" }}
                 />
 
@@ -122,7 +122,7 @@ export default function ExperienceSection() {
                     className={cn(
                       "w-full text-left p-6 rounded-2xl border transition-all duration-300",
                       expandedIndex === index
-                        ? "bg-violet-500/5 border-violet-500/30 shadow-lg shadow-violet-500/5"
+                        ? "bg-cyan-500/5 border-cyan-500/30 shadow-lg shadow-cyan-500/5"
                         : ""
                     )}
                     style={expandedIndex !== index ? { background: "var(--card-bg)", borderColor: "var(--card-border)" } : undefined}
@@ -130,10 +130,10 @@ export default function ExperienceSection() {
                     <div className="flex items-start justify-between gap-4">
                       <div className="flex-1">
                         <div className="flex items-center gap-2 mb-1">
-                          <Briefcase size={16} className="text-violet-500" />
+                          <Briefcase size={16} className="text-cyan-500" />
                           <h3 className="text-lg font-semibold t-primary">{exp.role}</h3>
                         </div>
-                        <p className="text-violet-500 font-medium mb-2">{exp.company}</p>
+                        <p className="text-cyan-500 font-medium mb-2">{exp.company}</p>
                         <div className="flex flex-wrap items-center gap-3 text-xs t-muted">
                           <span className="flex items-center gap-1"><Calendar size={12} />{exp.dates}</span>
                           <span className="flex items-center gap-1"><MapPin size={12} />{exp.location}</span>
@@ -159,7 +159,7 @@ export default function ExperienceSection() {
                             transition={{ duration: 0.3, delay: bi * 0.08 }}
                             className="flex items-start gap-3 text-sm t-secondary"
                           >
-                            <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-violet-500 shrink-0" />
+                            <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-cyan-500 shrink-0" />
                             {bullet}
                           </motion.li>
                         ))}

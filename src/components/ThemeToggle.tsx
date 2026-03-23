@@ -9,14 +9,14 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={toggleTheme}
-      className="relative p-2 rounded-xl transition-colors hover:bg-violet-500/10"
+      className="relative p-2 rounded-xl transition-colors hover:bg-cyan-400/10"
       style={{ background: "var(--card-bg)", border: "1px solid var(--card-border)" }}
       aria-label="Toggle theme"
     >
       {theme === "dark" ? (
-        <Sun size={18} className="text-yellow-400" />
+        <Sun size={18} className="text-amber-300" />
       ) : (
-        <Moon size={18} className="text-violet-500" />
+        <Moon size={18} className="text-cyan-500" />
       )}
     </button>
   );

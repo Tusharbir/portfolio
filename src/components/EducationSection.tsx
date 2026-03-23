@@ -26,7 +26,7 @@ export default function EducationSection() {
   const { education, certifications } = resumeData;
 
   return (
-    <section id="education" className="relative py-24 px-4">
+    <section id="education" className="tech-section relative py-24 px-4">
       <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -40,7 +40,7 @@ export default function EducationSection() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-xs tracking-[0.3em] uppercase text-violet-500 mb-4 block"
+            className="text-xs tracking-[0.3em] uppercase text-cyan-500 mb-4 block"
           >
             Academic Background
           </motion.span>
@@ -50,7 +50,7 @@ export default function EducationSection() {
             whileInView={{ scaleX: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="h-[2px] w-24 bg-gradient-to-r from-violet-500 to-cyan-400 mx-auto rounded-full origin-center"
+            className="h-[2px] w-24 bg-gradient-to-r from-cyan-500 to-cyan-400 mx-auto rounded-full origin-center"
           />
         </motion.div>
 
@@ -72,13 +72,13 @@ export default function EducationSection() {
                   whileInView={{ rotate: 0, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.15, type: "spring", stiffness: 250 }}
-                  className="p-3 rounded-xl bg-violet-500/10 shrink-0"
+                  className="p-3 rounded-xl bg-cyan-500/10 shrink-0"
                 >
-                  <GraduationCap size={24} className="text-violet-500" />
+                  <GraduationCap size={24} className="text-cyan-500" />
                 </motion.div>
                 <div className="flex-1">
-                  <h3 className="text-lg font-semibold t-primary mb-1 group-hover:text-violet-500 transition-colors">{edu.degree}</h3>
-                  <p className="text-violet-500 font-medium mb-2">{edu.institution}</p>
+                  <h3 className="text-lg font-semibold t-primary mb-1 group-hover:text-cyan-500 transition-colors">{edu.degree}</h3>
+                  <p className="text-cyan-500 font-medium mb-2">{edu.institution}</p>
                   <div className="flex flex-wrap items-center gap-3 text-xs t-muted mb-3">
                     <span className="flex items-center gap-1"><Calendar size={12} />{edu.dates}</span>
                     <span className="flex items-center gap-1"><MapPin size={12} />{edu.location}</span>
@@ -92,7 +92,7 @@ export default function EducationSection() {
                   >
                     {edu.details.map((d, di) => (
                       <motion.li key={di} variants={listItem} className="flex items-start gap-2 text-sm t-secondary">
-                        <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-violet-500/60 shrink-0" />{d}
+                        <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-cyan-500/60 shrink-0" />{d}
                       </motion.li>
                     ))}
                   </motion.ul>
@@ -115,7 +115,7 @@ export default function EducationSection() {
               whileInView={{ scaleX: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="block w-8 h-px bg-violet-500/50 origin-left"
+              className="block w-8 h-px bg-cyan-500/50 origin-left"
             />
             Certificates & Training
           </h3>
@@ -145,7 +145,7 @@ export default function EducationSection() {
                 </motion.div>
                 <div>
                   <h4 className="text-base font-semibold t-primary">{cert.title}</h4>
-                  <p className="text-sm text-violet-500">{cert.provider}</p>
+                  <p className="text-sm text-cyan-500">{cert.provider}</p>
                 </div>
               </div>
               <p className="text-xs t-muted mb-3 flex items-center gap-1 relative z-10"><Calendar size={12} />{cert.dates}</p>
@@ -158,7 +158,7 @@ export default function EducationSection() {
               >
                 {cert.details.map((d, di) => (
                   <motion.li key={di} variants={listItem} className="flex items-start gap-2 text-sm t-secondary">
-                    <span className="mt-1.5 w-1 h-1 rounded-full bg-violet-500/60 shrink-0" />{d}
+                    <span className="mt-1.5 w-1 h-1 rounded-full bg-cyan-500/60 shrink-0" />{d}
                   </motion.li>
                 ))}
               </motion.ul>

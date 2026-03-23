@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 import AnimatedBackground from "@/components/AnimatedBackground";
+import FuturisticOverlay from "@/components/FuturisticOverlay";
 import Navbar from "@/components/Navbar";
 import ProjectShowcaseCard from "@/components/ProjectShowcaseCard";
 import ScrollProgress from "@/components/ScrollProgress";
@@ -12,14 +13,25 @@ import { resumeData } from "@/data/resume";
 
 export default function ProjectsPage() {
   const { projects } = resumeData;
+  const gridVariants = {
+    hidden: {},
+    visible: {
+      transition: { staggerChildren: 0.08, delayChildren: 0.08 },
+    },
+  };
+  const itemVariants = {
+    hidden: { opacity: 0, y: 18 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] } },
+  };
 
   return (
     <ThemeProvider>
       <AnimatedBackground />
+      <FuturisticOverlay subtle />
       <ScrollProgress />
       <Navbar />
 
-      <main className="relative z-10 min-h-screen px-4 pb-24 pt-24">
+      <main className="relative z-10 min-h-screen px-4 pb-24 pt-28">
         <div className="mx-auto max-w-7xl">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -29,7 +41,7 @@ export default function ProjectsPage() {
           >
             <Link
               href="/#projects"
-              className="mb-6 inline-flex items-center gap-2 text-sm font-medium text-violet-400 transition hover:text-violet-300"
+              className="mb-6 inline-flex items-center gap-2 text-sm font-medium text-cyan-400 transition hover:text-cyan-300"
             >
               <ArrowLeft size={16} aria-hidden />
               Back to home
@@ -40,14 +52,19 @@ export default function ProjectsPage() {
             </p>
           </motion.div>
 
-          <div
+          <motion.div
+            variants={gridVariants}
+            initial="hidden"
+            animate="visible"
             className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-10"
             aria-label="All projects"
           >
             {projects.map((project, index) => (
-              <ProjectShowcaseCard key={project.title} project={project} index={index} />
+              <motion.div key={project.title} variants={itemVariants}>
+                <ProjectShowcaseCard project={project} index={index} />
+              </motion.div>
             ))}
-          </div>
+          </motion.div>
         </div>
       </main>
     </ThemeProvider>

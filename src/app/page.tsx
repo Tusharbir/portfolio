@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import AnimatedBackground from "@/components/AnimatedBackground";
+import FuturisticOverlay from "@/components/FuturisticOverlay";
 import SplashScreen from "@/components/SplashScreen";
 import Navbar from "@/components/Navbar";
 import ScrollProgress from "@/components/ScrollProgress";
@@ -13,6 +14,7 @@ import ProjectsSection from "@/components/ProjectsSection";
 import SkillsSection from "@/components/SkillsSection";
 import EducationSection from "@/components/EducationSection";
 import ContactSection from "@/components/ContactSection";
+import ScrollWarpSection from "@/components/ScrollWarpSection";
 import { ThemeProvider } from "@/components/ThemeProvider";
 
 function SectionDivider() {
@@ -23,27 +25,49 @@ function SectionDivider() {
         whileInView={{ scaleX: 1, opacity: 1 }}
         viewport={{ once: true, margin: "-20px" }}
         transition={{ duration: 1, ease: "easeOut" }}
-        className="h-px bg-gradient-to-r from-transparent via-violet-500/25 to-transparent origin-center"
+        className="h-px bg-gradient-to-r from-transparent via-cyan-300/30 to-transparent origin-center"
       />
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8, delay: 0.3 }}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-4 rounded-full bg-violet-500/10 blur-xl pointer-events-none"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-4 rounded-full bg-cyan-300/20 blur-xl pointer-events-none"
       />
     </div>
   );
 }
 
 export default function Home() {
-  const [splashDone, setSplashDone] = useState(false);
+  const [splashDone, setSplashDone] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return sessionStorage.getItem("portfolio-splash-done") === "1";
+  });
+
+  useEffect(() => {
+    if (!splashDone) return;
+
+    const hash = window.location.hash.replace("#", "");
+    if (!hash) return;
+
+    const id = window.setTimeout(() => {
+      document.getElementById(hash)?.scrollIntoView({ behavior: "smooth" });
+    }, 50);
+
+    return () => window.clearTimeout(id);
+  }, [splashDone]);
+
+  const handleSplashComplete = () => {
+    sessionStorage.setItem("portfolio-splash-done", "1");
+    setSplashDone(true);
+  };
 
   return (
     <ThemeProvider>
-      {!splashDone && <SplashScreen onComplete={() => setSplashDone(true)} />}
+      {!splashDone && <SplashScreen onComplete={handleSplashComplete} />}
 
       <AnimatedBackground />
+      <FuturisticOverlay />
 
       {splashDone && (
         <motion.div
@@ -55,19 +79,31 @@ export default function Home() {
           <Navbar />
 
           <main className="relative z-10">
-            <HeroSection />
+            <ScrollWarpSection>
+              <HeroSection />
+            </ScrollWarpSection>
             <SectionDivider />
-            <ExperienceSection />
+            <ScrollWarpSection>
+              <ExperienceSection />
+            </ScrollWarpSection>
             <SectionDivider />
-            <AchievementsSection />
+            <ScrollWarpSection>
+              <AchievementsSection />
+            </ScrollWarpSection>
             <SectionDivider />
             <ProjectsSection />
             <SectionDivider />
-            <SkillsSection />
+            <ScrollWarpSection>
+              <SkillsSection />
+            </ScrollWarpSection>
             <SectionDivider />
-            <EducationSection />
+            <ScrollWarpSection>
+              <EducationSection />
+            </ScrollWarpSection>
             <SectionDivider />
-            <ContactSection />
+            <ScrollWarpSection>
+              <ContactSection />
+            </ScrollWarpSection>
           </main>
         </motion.div>
       )}
