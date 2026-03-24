@@ -39,7 +39,7 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="tech-section relative min-h-screen overflow-hidden px-4 pt-16"
+      className="tech-section relative min-h-screen overflow-hidden px-4 pt-32 pb-16"
     >
       <div className="pointer-events-none absolute inset-0">
         <motion.svg

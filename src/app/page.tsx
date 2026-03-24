@@ -3,8 +3,10 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import AnimatedBackground from "@/components/AnimatedBackground";
+import CursorSpotlight from "@/components/CursorSpotlight";
 import FuturisticOverlay from "@/components/FuturisticOverlay";
 import SplashScreen from "@/components/SplashScreen";
+import WixScrollSection from "@/components/WixScrollSection";
 import Navbar from "@/components/Navbar";
 import ScrollProgress from "@/components/ScrollProgress";
 import HeroSection from "@/components/HeroSection";
@@ -66,6 +68,7 @@ export default function Home() {
       {!splashDone && <SplashScreen onComplete={handleSplashComplete} />}
 
       <AnimatedBackground />
+      <CursorSpotlight />
       <FuturisticOverlay subtle />
 
       {splashDone && (
@@ -78,19 +81,33 @@ export default function Home() {
           <Navbar />
 
           <main className="relative z-10">
-            <HeroSection />
-            <SectionDivider />
-            <ExperienceSection />
-            <SectionDivider />
-            <AchievementsSection />
-            <SectionDivider />
-            <ProjectsSection />
-            <SectionDivider />
-            <SkillsSection />
-            <SectionDivider />
-            <EducationSection />
-            <SectionDivider />
-            <ContactSection />
+            <WixScrollSection>
+              <HeroSection />
+              <SectionDivider />
+            </WixScrollSection>
+            <WixScrollSection>
+              <ExperienceSection />
+              <SectionDivider />
+            </WixScrollSection>
+            <WixScrollSection>
+              <AchievementsSection />
+              <SectionDivider />
+            </WixScrollSection>
+            <WixScrollSection>
+              <ProjectsSection />
+              <SectionDivider />
+            </WixScrollSection>
+            <WixScrollSection>
+              <SkillsSection />
+              <SectionDivider />
+            </WixScrollSection>
+            <WixScrollSection>
+              <EducationSection />
+              <SectionDivider />
+            </WixScrollSection>
+            <WixScrollSection>
+              <ContactSection />
+            </WixScrollSection>
           </main>
         </motion.div>
       )}

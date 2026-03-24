@@ -42,31 +42,20 @@ export default function ProjectsSection() {
         </motion.div>
 
         <div
-          className="md:hidden max-w-full overflow-x-auto overflow-y-visible pb-4 [scrollbar-gutter:stable]"
+          className="max-w-full overflow-x-auto overflow-y-visible pb-8 pt-4 [scrollbar-gutter:stable] hide-scrollbar"
           style={{ WebkitOverflowScrolling: "touch" }}
           aria-label="Project cards, horizontal scroll"
         >
-          <div className="flex w-max min-w-full snap-x snap-mandatory gap-5 pr-3">
+          <div className="flex w-max min-w-full snap-x snap-mandatory gap-6 px-4 sm:px-0 pr-8">
             {projects.map((project, index) => (
               <ProjectFlipCard
                 key={project.title}
                 project={project}
                 index={index}
-                className="snap-start"
+                className="snap-start sm:snap-center"
               />
             ))}
           </div>
-        </div>
-
-        <div className="hidden md:grid md:grid-cols-2 md:gap-6 xl:grid-cols-3 xl:gap-7" aria-label="Project cards, grid">
-          {projects.map((project, index) => (
-            <ProjectFlipCard
-              key={project.title}
-              project={project}
-              index={index}
-              className="w-full sm:w-full"
-            />
-          ))}
         </div>
       </div>
 

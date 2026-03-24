@@ -8,55 +8,55 @@
 }
 
 :root {
-  --background: #010309;
-  --foreground: #eff9ff;
-  --card-bg: rgba(5, 14, 26, 0.8);
-  --card-border: rgba(89, 214, 255, 0.24);
-  --text-primary: #eff9ff;
-  --text-secondary: rgba(223, 242, 255, 0.86);
-  --text-muted: rgba(176, 211, 233, 0.7);
-  --text-faint: rgba(151, 187, 212, 0.53);
-  --nav-bg: rgba(2, 8, 16, 0.88);
-  --nav-border: rgba(89, 214, 255, 0.24);
-  --mobile-menu-bg: rgba(2, 9, 18, 0.97);
-  --glow-color: rgba(72, 233, 255, 0.2);
-  --grid-line: rgba(58, 152, 200, 0.14);
-  --scan-line: rgba(80, 226, 255, 0.06);
+  --background: #030305;
+  --foreground: #f8fafc;
+  --card-bg: rgba(10, 10, 15, 0.6);
+  --card-border: rgba(255, 255, 255, 0.08);
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --text-faint: #475569;
+  --nav-bg: rgba(3, 3, 5, 0.85);
+  --nav-border: rgba(255, 255, 255, 0.05);
+  --mobile-menu-bg: rgba(5, 5, 10, 0.97);
+  --glow-color: rgba(139, 92, 246, 0.15);
+  --grid-line: rgba(255, 255, 255, 0.04);
+  --scan-line: rgba(255, 255, 255, 0.02);
   --brand-from: #7ce9ff;
   --brand-mid: #b6f5ff;
   --brand-to: #97ffd8;
   --hero-name-from: #79e9ff;
   --hero-name-mid: #beefff;
   --hero-name-to: #9cf6ff;
-  --hero-pill-text: #a8efff;
-  --hero-pill-bg: rgba(35, 173, 215, 0.14);
-  --hero-pill-border: rgba(117, 224, 255, 0.32);
+  --hero-pill-text: #c4b5fd;
+  --hero-pill-bg: rgba(139, 92, 246, 0.1);
+  --hero-pill-border: rgba(139, 92, 246, 0.2);
 }
 
 .dark {
-  --background: #010309;
-  --foreground: #eff9ff;
-  --card-bg: rgba(5, 14, 26, 0.8);
-  --card-border: rgba(89, 214, 255, 0.24);
-  --text-primary: #eff9ff;
-  --text-secondary: rgba(223, 242, 255, 0.86);
-  --text-muted: rgba(176, 211, 233, 0.7);
-  --text-faint: rgba(151, 187, 212, 0.53);
-  --nav-bg: rgba(2, 8, 16, 0.88);
-  --nav-border: rgba(89, 214, 255, 0.24);
-  --mobile-menu-bg: rgba(2, 9, 18, 0.97);
-  --glow-color: rgba(72, 233, 255, 0.2);
-  --grid-line: rgba(58, 152, 200, 0.14);
-  --scan-line: rgba(80, 226, 255, 0.06);
+  --background: #030305;
+  --foreground: #f8fafc;
+  --card-bg: rgba(10, 10, 15, 0.6);
+  --card-border: rgba(255, 255, 255, 0.08);
+  --text-primary: #f8fafc;
+  --text-secondary: #cbd5e1;
+  --text-muted: #94a3b8;
+  --text-faint: #475569;
+  --nav-bg: rgba(3, 3, 5, 0.85);
+  --nav-border: rgba(255, 255, 255, 0.05);
+  --mobile-menu-bg: rgba(5, 5, 10, 0.97);
+  --glow-color: rgba(139, 92, 246, 0.15);
+  --grid-line: rgba(255, 255, 255, 0.04);
+  --scan-line: rgba(255, 255, 255, 0.02);
   --brand-from: #7ce9ff;
   --brand-mid: #b6f5ff;
   --brand-to: #97ffd8;
   --hero-name-from: #79e9ff;
   --hero-name-mid: #beefff;
   --hero-name-to: #9cf6ff;
-  --hero-pill-text: #a8efff;
-  --hero-pill-bg: rgba(35, 173, 215, 0.14);
-  --hero-pill-border: rgba(117, 224, 255, 0.32);
+  --hero-pill-text: #c4b5fd;
+  --hero-pill-bg: rgba(139, 92, 246, 0.1);
+  --hero-pill-border: rgba(139, 92, 246, 0.2);
 }
 
 .light {
@@ -88,6 +88,7 @@
 html {
   scroll-behavior: smooth;
   overflow-x: hidden;
+  scroll-padding-top: 6rem;
 }
 
 body {
