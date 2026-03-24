@@ -86,17 +86,15 @@ export default function SkillsSection() {
                 className="p-6 rounded-2xl transition-all hover:-translate-y-1 hover:shadow-lg"
                 style={{ background: "var(--card-bg)", border: "1px solid var(--card-border)" }}
               >
-                <div className="flex items-center gap-3 mb-5">
+                <div className="flex items-center gap-3 mb-5 relative z-10">
                   <motion.div
-                    initial={{ rotate: -30, scale: 0 }}
-                    whileInView={{ rotate: 0, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: 0.1 + index * 0.1, type: "spring", stiffness: 250 }}
-                    className={`p-2 rounded-xl bg-gradient-to-br ${gradient}`}
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                    className={`p-2 rounded-xl bg-gradient-to-br ${gradient} shadow-[0_0_15px_rgba(34,211,238,0.4)]`}
                   >
                     <Icon size={20} className="text-white" />
                   </motion.div>
-                  <h3 className="text-base font-semibold t-primary">{group.category}</h3>
+                  <h3 className="text-base font-semibold t-primary tracking-wide">{group.category}</h3>
                 </div>
 
                 <motion.div
@@ -109,10 +107,11 @@ export default function SkillsSection() {
                   {group.items.map((skill, si) => (
                     <motion.span
                       key={si}
-                      variants={pillPop}
-                      whileTap={{ scale: 0.9 }}
-                      className="px-3 py-1.5 rounded-lg text-sm t-secondary cursor-default transition-all hover:-translate-y-0.5 hover:text-cyan-500"
-                      style={{ background: "var(--card-bg)", border: "1px solid var(--card-border)" }}
+                      animate={{ y: [0, -3, 0] }}
+                      transition={{ duration: 3 + (si % 3), repeat: Infinity, ease: "easeInOut", delay: si * 0.2 }}
+                      whileHover={{ scale: 1.15, y: -6, rotate: si % 2 === 0 ? 4 : -4 }}
+                      whileTap={{ scale: 0.95 }}
+                      className="px-3 py-1.5 rounded-lg text-sm font-medium text-cyan-100 cursor-crosshair transition-colors duration-200 border border-cyan-500/30 bg-cyan-950/40 hover:text-cyan-300 hover:border-cyan-400 hover:bg-cyan-900/60 shadow-[0_0_8px_rgba(34,211,238,0.15)] hover:shadow-[0_0_20px_rgba(34,211,238,0.5)] z-10"
                     >
                       {skill}
                     </motion.span>

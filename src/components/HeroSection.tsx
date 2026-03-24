@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import { ArrowDown, Download, Github, Linkedin, Mail } from "lucide-react";
 import { resumeData } from "@/data/resume";
 
+import TechVectors from "@/components/TechVectors";
+
 const stagger = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.12 } },
@@ -41,6 +43,7 @@ export default function HeroSection() {
       id="hero"
       className="tech-section relative min-h-screen overflow-hidden px-4 pt-32 pb-16"
     >
+      <TechVectors />
       <div className="pointer-events-none absolute inset-0">
         <motion.svg
           viewBox="0 0 1200 720"
@@ -62,8 +65,9 @@ export default function HeroSection() {
         className="relative z-10 mx-auto flex min-h-[calc(100vh-4rem)] max-w-5xl flex-col items-center justify-center text-center"
       >
         <motion.div variants={scaleIn} className="mb-6 inline-block">
-          <span className="hero-pill rounded-full px-4 py-1.5 text-xs uppercase tracking-[0.2em]">
-            Available for Co-op — May/June 2026
+          <span className="hero-pill relative flex overflow-hidden rounded-full border border-cyan-400/60 bg-cyan-500/10 px-5 py-2 text-xs uppercase tracking-[0.25em] text-cyan-100 shadow-[0_0_20px_rgba(34,211,238,0.3)] animate-pulse-glow">
+            <span className="absolute inset-0 -translate-x-full animate-[shimmer_2.5s_infinite] bg-gradient-to-r from-transparent via-cyan-300/40 to-transparent" />
+            <span className="relative font-bold">Available for Co-op — May/June 2026</span>
           </span>
         </motion.div>
 

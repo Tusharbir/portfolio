@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
@@ -13,15 +14,25 @@ import { resumeData } from "@/data/resume";
 
 export default function ProjectsPage() {
   const { projects } = resumeData;
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }, []);
+
   const gridVariants = {
     hidden: {},
     visible: {
-      transition: { staggerChildren: 0.08, delayChildren: 0.08 },
+      transition: { staggerChildren: 0.15, delayChildren: 0.1 },
     },
   };
   const itemVariants = {
-    hidden: { opacity: 0, y: 18 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.45, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] } },
+    hidden: { opacity: 0, y: 50, scale: 0.95 },
+    visible: { 
+      opacity: 1, 
+      y: 0, 
+      scale: 1, 
+      transition: { type: "spring" as const, stiffness: 200, damping: 22 } 
+    },
   };
 
   return (
