@@ -113,12 +113,15 @@ export default function HeroSection() {
           </motion.button>
 
           <motion.a
-            href="#contact"
+            href="/Resume_Tusharbir_Singh_Mutty.pdf"
+            download="Resume_Tusharbir_Singh_Mutty.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
             whileTap={{ scale: 0.95 }}
             className="flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-medium transition-all t-secondary hover:bg-cyan-400/10 hover:t-primary"
             style={{ border: "1px solid var(--card-border)" }}
           >
-            <Download size={16} />
+            <Download size={16} aria-hidden />
             Download Resume
           </motion.a>
         </motion.div>
