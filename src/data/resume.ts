@@ -28,7 +28,6 @@ export const resumeData = {
         "Coordinated digital assets and staff workflows, troubleshooting system-related issues in a fast-paced environment.",
         "Created menus, promotional posters, and digital assets for the business brand.",
         "Designed and developed the business website at simmistiffinservice.com.",
-        "Also designed and built goldengatecatering.com for Golden Gate Catering as a freelance client project.",
       ],
     },
     {
